@@ -75,7 +75,7 @@ main PROC
 	push		es
 	push		ss
 	push		ds
-	;push		cs
+	push		cs
 
 	;查询中断向量表
 	push		7								;表的元素个数
