@@ -1,27 +1,27 @@
-include		environment.inc		; ±à³Ì»·¾³ÉùÃ÷
+include		environment.inc		; ç¼–ç¨‹ç¯å¢ƒå£°æ˜
 
 .data
 .code
 
-; Ãû³Æ£º	binary_search
-; ¹¦ÄÜ£º	²éÑ¯ÖĞ¶ÏÏòÁ¿±íµØÖ·
-; ²ÎÊı£º pPage_table:ptr dword
+; åç§°ï¼š	binary_search
+; åŠŸèƒ½ï¼š	æŸ¥è¯¢ä¸­æ–­å‘é‡è¡¨åœ°å€
+; å‚æ•°ï¼š pPage_table:ptr dword
 ;		query_value:dword
 ;		number_size:dword
 ;		table_size:dword
-; ÒªÇó£º ±íµÄÄÚÈİ°´ÕÕÉıĞòÅÅÁĞ
-; ÊµÏÖ£º Ê¹ÓÃ¶Ô°ë²éÕÒ½«query_valueÓë±í¸ñÖĞµÄÖµ¶Ô±È
-; ·µ»Ø£º	Èç¹û³É¹¦ÔòEAX = ÖĞ¶Ï´¦Àí³ÌĞòÖ¸Õë£¬·ñÔò·µ»Ø0
+; è¦æ±‚ï¼š è¡¨çš„å†…å®¹æŒ‰ç…§å‡åºæ’åˆ—
+; å®ç°ï¼š ä½¿ç”¨å¯¹åŠæŸ¥æ‰¾å°†query_valueä¸è¡¨æ ¼ä¸­çš„å€¼å¯¹æ¯”
+; è¿”å›ï¼š	å¦‚æœæˆåŠŸåˆ™EAX = ä¸­æ–­å¤„ç†ç¨‹åºæŒ‡é’ˆï¼Œå¦åˆ™è¿”å›0
 
 binary_search proc
-					pPage_table		equ		[ebp+8]			;±íÖ¸Õë
-					query_value		equ		[ebp+12]		;²éÑ¯Öµ£¬ÖĞ¶ÏĞÅºÅ
-					member_size		equ		[ebp+16]		;±íÏî´óĞ¡
-					table_size		equ		[ebp+20]		;±íµÄÔªËØ¸öÊı
+					pPage_table		equ		[ebp+8]			;è¡¨æŒ‡é’ˆ
+					query_value		equ		[ebp+12]		;æŸ¥è¯¢å€¼ï¼Œä¸­æ–­ä¿¡å·
+					member_size		equ		[ebp+16]		;è¡¨é¡¹å¤§å°
+					table_size		equ		[ebp+20]		;è¡¨çš„å…ƒç´ ä¸ªæ•°
 
-					first			equ		[ebp-4]			;µÚÒ»¸öÔªËØÏÂ±ê
-					last			equ		[ebp-8]			;×îºóÒ»¸öÔªËØÏÂ±ê
-					mid				equ		[ebp-12]		;ÖĞ¼äÔªËØÏÂ±ê
+					first			equ		[ebp-4]			;ç¬¬ä¸€ä¸ªå…ƒç´ ä¸‹æ ‡
+					last			equ		[ebp-8]			;æœ€åä¸€ä¸ªå…ƒç´ ä¸‹æ ‡
+					mid				equ		[ebp-12]		;ä¸­é—´å…ƒç´ ä¸‹æ ‡
 
 					push			ebp
 					mov				ebp,esp
@@ -30,19 +30,19 @@ binary_search proc
 					push			edx
 					push			edi
 
-					;³õÊ¼»¯
+					;åˆå§‹åŒ–
 					mov  eax,0
 					mov	 first,eax				; first = 0
 					mov	 eax,table_size			; last = (table_size - 1)
 					dec	 eax
 					mov	 last,eax
 					mov	 edi,query_value		; EDI = searchVal
-					mov	 ebx,pPage_table		; EBX = ±íÖ¸Õë
+					mov	 ebx,pPage_table		; EBX = è¡¨æŒ‡é’ˆ
 
 				start: ; while first <= last
 					mov	 eax,first
 					cmp	 eax,last
-					ja	 err					; ÍË³ö²éÕÒ
+					ja	 err					; é€€å‡ºæŸ¥æ‰¾
 
 					; mid = (last + first) / 2
 					mov	 eax,last
@@ -50,10 +50,10 @@ binary_search proc
 					shr	 eax,1
 					mov	 mid,eax
 
-					; EDX = ÖĞ¼äÔªËØµÄÖµ
+					; EDX = ä¸­é—´å…ƒç´ çš„å€¼
 					mov	 edx,0
 					mul	 dword ptr member_size				; eax * mid
-					mov	 edx,[ebx+eax]				; EDX = ÖĞ¼äÔªËØµÄÖµ
+					mov	 edx,[ebx+eax]				; EDX = ä¸­é—´å…ƒç´ çš„å€¼
 
 					; if ( EDX < query_value(EDI) )
 					;	first = mid + 1;
@@ -74,11 +74,11 @@ binary_search proc
 					jmp	 loop_point
 
 					; else return mid
-				L3:	mov	 eax,mid  				; ÕÒµ½Òª²éÑ¯µÄÖµ£¬ÖĞ¶ÏĞÅºÅ
-					mov  edx,0					; ÏÂ±ê * ÔªËØ´óĞ¡
+				L3:	mov	 eax,mid  				; æ‰¾åˆ°è¦æŸ¥è¯¢çš„å€¼ï¼Œä¸­æ–­ä¿¡å·
+					mov  edx,0					; ä¸‹æ ‡ * å…ƒç´ å¤§å°
 					mul  dword ptr member_size
-					add  eax,ebx				; ÔªËØµØÖ·
-					add  eax,4					; ·µ»ØÖĞ¶Ï´¦Àí³ÌĞòµØÖ·
+					add  eax,ebx				; å…ƒç´ åœ°å€
+					add  eax,4					; è¿”å›ä¸­æ–­å¤„ç†ç¨‹åºåœ°å€
 					jmp	 return						; return (mid)
 
 		loop_point:	jmp	 start
@@ -93,3 +93,27 @@ binary_search proc
 					ret			16
 binary_search endp
 end
+
+; binary search Java å®ç°
+;class Solution {
+;    public int search(int[] nums, int target) {
+;        int left = 0, right = nums.length - 1;
+;        while (left <= right) {
+;            int mid = (right - left) / 2 + left;
+;            int num = nums[mid];
+;            if (num == target) {
+;                return mid;
+;            } else if (num > target) {
+;                right = mid - 1;
+;            } else {
+;                left = mid + 1;
+;            }
+;        }
+;        return -1;
+;    }
+;}
+
+;ä½œè€…ï¼šLeetCode-Solution
+;é“¾æ¥ï¼šhttps://leetcode.cn/problems/binary-search/solution/er-fen-cha-zhao-by-leetcode-solution-f0xw/
+;æ¥æºï¼šåŠ›æ‰£ï¼ˆLeetCodeï¼‰
+;è‘—ä½œæƒå½’ä½œè€…æ‰€æœ‰ã€‚å•†ä¸šè½¬è½½è¯·è”ç³»ä½œè€…è·å¾—æˆæƒï¼Œéå•†ä¸šè½¬è½½è¯·æ³¨æ˜å‡ºå¤„ã€‚
