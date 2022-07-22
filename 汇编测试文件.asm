@@ -3,10 +3,11 @@
 mov  edx , 1
 mov  ecx , 1
 mov  ebx , 1
-sub  eax , 10h
-add  eax , ebx
-inc  edx
-dec  ecx
+mov  eax , 10h
+sub  eax , 10h      ;eax - 10h = 0
+add  eax , ebx      ;eax + ebx = 1
+inc  edx            ;edx + 1 = 2
+dec  ecx            ;ecx - 1 = 0
 
 
 mov  eax , 16               ;十进制
