@@ -5,7 +5,6 @@ binary_search proc
 					query_value		equ		[ebp+12]		;查询值，中断信号
 					member_size		equ		[ebp+16]		;表项大小
 					table_size		equ		[ebp+20]		;表的元素个数
-
 					first			equ		[ebp-4]			;第一个元素下标
 					last			equ		[ebp-8]			;最后一个元素下标
 					mid				equ		[ebp-12]		;中间元素下标
@@ -17,9 +16,7 @@ binary_search proc
 					push			ebx
 					push			edx
 					push			edi
-
                     ;函数功能代码，省略
-
                     pop			edi
 					pop			edx
 					pop			ebx
