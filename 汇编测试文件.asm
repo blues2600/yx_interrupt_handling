@@ -1,5 +1,19 @@
 
 
+                    mov	 eax,first
+					cmp	 eax,last
+					ja	 err
+                    mov	 eax,last
+					add	 eax,first
+					shr	 eax,1
+					mov	 mid,eax
+
+                    ......
+
+                err:mov			eax,0
+
+                    ......
+
 binary_search proc
 					pPage_table		equ		[ebp+8]			;表指针
 					query_value		equ		[ebp+12]		;查询值，中断信号
