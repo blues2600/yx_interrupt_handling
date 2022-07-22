@@ -1,5 +1,14 @@
 
 
+mov  edx,1
+mov  ecx,1
+mov  ebx,1
+sub  eax , 10h
+add  eax , ebx
+inc  edx
+dec  ecx
+
+
 mov  eax , 16               ;十进制
 mov  eax , 0x10             ;十六进制
 mov  eax , 10h              ;十六进制
