@@ -17,12 +17,13 @@ binary_search proc
 					push			edx
 					push			edi
                     ;函数功能代码，省略
+                    ;结语
                     pop			edi
 					pop			edx
 					pop			ebx
 					mov			esp,ebp
 					pop			ebp
-					ret			16
+					ret			
 binary_search endp
 
 
