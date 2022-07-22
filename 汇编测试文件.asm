@@ -1,5 +1,34 @@
 
 
+binary_search proc
+					pPage_table		equ		[ebp+8]			;表指针
+					query_value		equ		[ebp+12]		;查询值，中断信号
+					member_size		equ		[ebp+16]		;表项大小
+					table_size		equ		[ebp+20]		;表的元素个数
+
+					first			equ		[ebp-4]			;第一个元素下标
+					last			equ		[ebp-8]			;最后一个元素下标
+					mid				equ		[ebp-12]		;中间元素下标
+                    
+                    ;序言
+					push			ebp
+					mov				ebp,esp
+					sub				esp,12
+					push			ebx
+					push			edx
+					push			edi
+
+                    ;函数功能代码，省略
+
+                    pop			edi
+					pop			edx
+					pop			ebx
+					mov			esp,ebp
+					pop			ebp
+					ret			16
+binary_search endp
+
+
 mov  edx , 1
 mov  ecx , 1
 mov  ebx , 1
