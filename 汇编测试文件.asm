@@ -1,14 +1,14 @@
 
 
-mov     eax,123         ;eax = 01111011b
-and     eax,0           ;eax = 00000000b
-mov     eax,123         ;eax = 01111011b
-and     eax,11111111b   ;eax = 11111111b
-or      eax,0           ;eax = 11111111b
-not     eax             ;eax = 00000000b
-or      eax,11111111b   ;eax = 11111111b
-xor     eax,11111111b   ;eax = 00000000b
-xor     eax,11111111b   ;eax = 11111111b        
+mov     eax,123             ;eax = 01111011b
+and     eax,0               ;eax = 00000000b
+mov     eax,123             ;eax = 01111011b
+and     eax,11111111b       ;eax = 11111111b
+or      eax,0               ;eax = 11111111b
+not     eax                 ;eax = 00000000b
+or      eax,11111111b       ;eax = 11111111b
+xor     eax,11111111b       ;eax = 00000000b
+xor     eax,11111111b       ;eax = 11111111b        
 
 
 NULL = 0                    ;使用等号创建符号常量
