@@ -70,5 +70,5 @@ mov  eax , dword ptr [0x00400000]
 mov  eax , 400000h          ;将数值0x00400000移动到eax
 
 ;将eax的值视为一个内存地址，此时eax是一个指针
-;将ecx的值移动到ecx指向的位置，即0x00400000位置
+;将ecx的值移动到eax指向的位置，即0x00400000位置
 mov  dword ptr [eax] , ecx
