@@ -1,8 +1,8 @@
 
 
-        BYTE    20    DUP(0)            ;20字节，值都为0
-        BYTE    20    DUP(?)            ;20字节，值都未初始化
-        BYTE    4     DUP（“STACK”）    ;20字节，初始化4个“STACK”字符串常量
+var_1   BYTE    20    DUP(0)            ;20字节，值都为0
+var_2   BYTE    20    DUP(?)            ;20字节，值都未初始化
+var_3   BYTE    4     DUP（“STACK”）    ;20字节，初始化4个“STACK”字符串常量
 
 
                     mov	 eax,first
