@@ -1,5 +1,10 @@
 
 
+        BYTE    20    DUP(0)            ;20字节，值都为0
+        BYTE    20    DUP(?)            ;20字节，值都未初始化
+        BYTE    4     DUP（“STACK”）    ;20字节，初始化4个“STACK”字符串常量
+
+
                     mov	 eax,first
 					cmp	 eax,last
 					ja	 err
