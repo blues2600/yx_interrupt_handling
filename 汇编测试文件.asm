@@ -2,7 +2,7 @@
 
 mov     eax,123             ;eax = 01111011b
 and     eax,0               ;eax = 00000000b
-mov     eax,123             ;eax = 01111011b
+not     eax                 ;eax = 11111111b
 and     eax,11111111b       ;eax = 11111111b
 or      eax,0               ;eax = 11111111b
 not     eax                 ;eax = 00000000b
