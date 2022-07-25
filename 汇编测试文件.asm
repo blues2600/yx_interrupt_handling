@@ -1,5 +1,13 @@
 
 
+NULL = 0                    ;使用等号创建符号常量
+TRUE = 1
+PI    EQU    3.14           ;使用EQU创建符号常量
+table_size	EQU	[ebp+20]	
+                            ;使用TEXTEQU创建符号常量
+continueMsg    TEXTEQU    <"Do you wish to continue (Y/N)?">
+
+
 var_1   BYTE    20    DUP(0)            ;20字节，值都为0
 var_2   BYTE    20    DUP(?)            ;20字节，值都未初始化
 var_3   BYTE    4     DUP（“STACK”）    ;20字节，初始化4个“STACK”字符串常量
