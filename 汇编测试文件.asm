@@ -1,5 +1,15 @@
 
 
+.data
+var     dword   0
+ch      byte    "a"
+
+.code
+mov     esi,offset var      ;var的内存地址移动到esi
+mov     edi,offset ch       ;ch的内存地址移动到edi
+
+
+
 mov     eax,123             ;eax = 01111011b
 and     eax,0               ;eax = 00000000b
 not     eax                 ;eax = 11111111b
