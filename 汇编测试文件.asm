@@ -1,4 +1,16 @@
 
+; 01111011b为二进制标志
+
+mov     al,123             ;al = 01111011b
+and     al,0               ;al = 00000000b
+not     al                 ;al = 11111111b
+and     al,11111111b       ;al = 11111111b
+or      al,0               ;al = 11111111b
+not     al                 ;al = 00000000b
+or      al,11111111b       ;al = 11111111b
+xor     al,11111111b       ;al = 00000000b
+xor     al,11111111b       ;al = 11111111b
+
 
 .data
 var         dword   13FE12h                     ;十六进制
@@ -14,15 +26,7 @@ mov     edi,offset ch       ;ch的内存地址移动到edi
 
 
 
-mov     eax,123             ;eax = 01111011b
-and     eax,0               ;eax = 00000000b
-not     eax                 ;eax = 11111111b
-and     eax,11111111b       ;eax = 11111111b
-or      eax,0               ;eax = 11111111b
-not     eax                 ;eax = 00000000b
-or      eax,11111111b       ;eax = 11111111b
-xor     eax,11111111b       ;eax = 00000000b
-xor     eax,11111111b       ;eax = 11111111b        
+        
 
 
 NULL = 0                    ;使用等号创建符号常量
