@@ -1,8 +1,12 @@
 
 
 .data
-var     dword   0
-ch      byte    "a"
+var         dword   13FE12h                     ;十六进制
+var2        word    0A12Bh  
+ch          byte    "a"
+str         byte    "have a nice day.",0        ;字符串后面通常加0表示结尾
+file_name   byte    "c:\\notepad.exe",0
+array       byte    100     dup(0)              ;定义100字节的数组，使用0初始化
 
 .code
 mov     esi,offset var      ;var的内存地址移动到esi
